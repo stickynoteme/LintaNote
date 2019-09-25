@@ -1,7 +1,7 @@
 !!NOTICE!!
 I'm just starting work on this and right now there is no major changes to the code.
 
-LintaNote: Falt searchable note taking program.
+LintaNote: Flat searchable note taking program.
 
 # Introduction
 
