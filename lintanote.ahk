@@ -1,14 +1,12 @@
 ﻿/*
 
-Name            : Lintalist
-Author          : Lintalist
-Purpose         : Searchable interactive lists to copy & paste text, run scripts,
-                  using easily exchangeable bundles
-Version         : 1.9.8.4
-Code            : https://github.com/lintalist/
-Website         : http://lintalist.github.io/
-AutoHotkey Forum: https://autohotkey.com/boards/viewtopic.php?f=6&t=3378
-License         : Copyright (c) 2009-2019 Lintalist
+Name            : LintaNote
+Author          : LintaNote
+Purpose         : Searchable flate note keeper
+Version         : 0.0.0.1
+Code            : ComingSoon
+Website         : COmingSoon/
+License         : Copyright (c) 2009-2019 Lintalist + Public Domain Changes
 
 This program is free software; you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software Foundation;
@@ -40,8 +38,8 @@ IniFile:="Settings.ini"
 PluginMultiCaret:=0 ; TODOMC
 
 ; Title + Version are included in Title and used in #IfWinActive hotkeys and WinActivate
-Title=Lintalist
-Version=1.9.8.4
+Title=LintaNote
+Version=0.0.0.1
 
 ; Gosub, ReadPluginSettings
 
