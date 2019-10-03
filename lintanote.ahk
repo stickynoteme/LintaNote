@@ -71,12 +71,8 @@ Menu, Tray, Add, %AppWindow%,             GlobalMenuHandler
 Menu, Tray, Icon, %AppWindow%,            icons\lintalist.ico
 Menu, Tray, Default, %AppWindow%
 Menu, Tray, Add,
-Menu, Tray, Add, &Help,          	      GlobalMenuHandler
-Menu, Tray, Icon,&Help,          	      icons\help.ico
 Menu, Tray, Add, &About,          	      GlobalMenuHandler
 Menu, Tray, Icon,&About,          	      icons\help.ico
-Menu, Tray, Add, &Quick Start Guide,      GlobalMenuHandler
-Menu, Tray, Icon,&Quick Start Guide,      icons\help.ico
 Menu, Tray, Add,
 Menu, Tray, Add, &Configuration,          GlobalMenuHandler
 Menu, Tray, Icon,&Configuration,          icons\gear.ico
@@ -85,33 +81,14 @@ Menu, Tray, Icon,&Open Lintalist folder,  icons\folder-horizontal-open.ico
 Menu, Tray, Add, &View Statistics,        GlobalMenuHandler
 Menu, Tray, Icon,&View Statistics,        icons\chart_pie.ico
 Menu, Tray, Add,
-Menu, Tray, Add, Check for updates,       GlobalMenuHandler
-Menu, Tray, Icon,Check for updates,       icons\download.ico
-Menu, Tray, Add,
 Menu, Tray, Add, &Manage Bundles,         GlobalMenuHandler
 Menu, Tray, Icon,&Manage Bundles,         icons\lintalist_bundle.ico
-Menu, Tray, Add, &Manage Local Variables, GlobalMenuHandler
-Menu, Tray, Icon,&Manage Local Variables, icons\variables.ico
-Menu, Tray, Add, &Manage Counters,        GlobalMenuHandler
-Menu, Tray, Icon,&Manage Counters,        icons\counter.ico
 Menu, Tray, Add,
 Menu, Tray, Add, &Load All Bundles,       MenuHandler ; exception
 Menu, Tray, Icon,&Load All Bundles,       icons\arrow-in.ico
-Menu, Tray, Add, &Reload Bundles (restarts Lintalist),         GlobalMenuHandler
-Menu, Tray, Icon,&Reload Bundles (restarts Lintalist),         icons\arrow-retweet.ico
-Menu, Tray, Add, &Restart as Administrator, GlobalMenuHandler
-Menu, Tray, Icon,&Restart as Administrator, icons\restart-admin.ico
-If A_IsAdmin
-	 Menu, Tray, Disable, &Restart as Administrator
 Menu, Tray, Add,
 Menu, Tray, Add, &Pause Lintalist,        GlobalMenuHandler
 Menu, Tray, Icon,&Pause Lintalist,        icons\control-pause.ico
-Menu, Tray, Add, Pause &Shortcut,         GlobalMenuHandler
-Menu, Tray, Icon,Pause &Shortcut,         icons\hotkeys.ico
-Menu, Tray, Add, Pause &Shorthand,        GlobalMenuHandler
-Menu, Tray, Icon,Pause &Shorthand,        icons\shorthand.ico
-Menu, Tray, Add, Pause &Scripts,          GlobalMenuHandler
-Menu, Tray, Icon,Pause &Scripts,          icons\scripts.ico
 Menu, Tray, Add,
 Menu, Tray, Add, E&xit,                   GlobalMenuHandler
 Menu, Tray, Icon,E&xit,                   icons\101_exit.ico
@@ -1914,42 +1891,6 @@ If (A_ThisMenuItem = "&Help")
 	Run, docs\index.html
 Else If (A_ThisMenuItem = "&About")
 	Gosub, ShowAbout
-Else If (A_ThisMenuItem = "&Quick Start Guide")
-	Gosub, QuickStartGuideMenu
-Else If (A_ThisMenuItem = "Check for updates")
-	Run, %A_AhkPath% %A_ScriptDir%\include\update.ahk
-Else If (A_ThisMenuItem = "&Manage Counters")
-		{
-		 If cl_ReadOnly
-			{
-			 MsgBox, 64, Lintalist, Lintalist is in Read Only mode - editing has been disabled.
-			 Return
-			}
-		 Gosub, SaveSettingsCounters
-		 StoreCounters:=Counters
-		 StoreLocalCounter_0:=LocalCounter_0
-		 SaveUpdatedBundles()
-		 If WinExist(AppWindow " ahk_class AutoHotkeyGUI")
-			Gui, 1:+Disabled
-		 RunWait, %A_AhkPath% include\CounterEditor.ahk %IniFile%
-		 IniRead, Counters, %IniFile%, settings, Counters, 0
-		 If WinExist(AppWindow " ahk_class AutoHotkeyGUI")
-			{
-			 Gui, 1:-Disabled
-			 WinActivate, %AppWindow% ahk_class AutoHotkeyGUI
-			}
-
-		 If (Counters <> StoreCounters)
-			{
-			 MsgBox, 36, Restart?, In order for any changes to take effect you must reload.`nOK to restart? ; 4+32 = 36
-			 IfMsgBox, Yes
-				{
-				 Gui, 1:Destroy
-				 ReadCountersIni()
-				 Gosub, RunReload
-				}
-			}
-		}
 Else If (A_ThisMenuItem = "E&xit")
 	ExitApp
 Else If (A_ThisMenuItem = "&Reload Bundles (restarts Lintalist)")
