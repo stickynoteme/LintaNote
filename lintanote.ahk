@@ -2519,8 +2519,6 @@ Menu, Help, Add, &Help, GlobalMenuHandler
 Menu, Help, Icon,&Help, icons\help.ico
 Menu, Help, Add, &About, GlobalMenuHandler
 Menu, Help, Icon,&About, icons\help.ico
-Menu, Help, Add, &Quick Start Guide, GlobalMenuHandler
-Menu, Help, Icon,&Quick Start Guide, icons\help.ico
 
 Menu, MenuBar2, Add, &Plugins, :Plugins
 Menu, MenuBar2, Add, &Help, :Help , Right ; make it available in Edit gui (Right works as of v1.1.22.07+)
