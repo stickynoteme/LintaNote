@@ -1987,18 +1987,6 @@ Else If (A_ThisMenuItem = "&Manage Local Variables")
 			 Gosub, RunReload
 			}
 		}
-; Tools menu
-Else If (A_ThisMenuItem = "Encrypt text")
-	 Run, %A_AhkPath% include\EncodeText.ahk
-else If (A_ThisMenuItem = "Convert CSV file")
-	Run, %A_AhkPath% Extras\BundleConverters\CSV.ahk
-else If (A_ThisMenuItem = "Convert List")
-	Run, %A_AhkPath% Extras\BundleConverters\List.ahk
-else If (A_ThisMenuItem = "Convert Texter bundle")
-	Run, %A_AhkPath% Extras\BundleConverters\Texter.ahk
-else If (A_ThisMenuItem = "Convert UltraEdit taglist")
-	Run, %A_AhkPath% Extras\BundleConverters\UltraEdit.ahk
-; /tools
 
 Return
 ; /for For tray and Search/Edit Gui menu
@@ -2526,12 +2514,6 @@ Menu, Plugins, Add, Insert [[html]]     , PluginMenuHandler
 Menu, Plugins, Add, Insert [[md]]       , PluginMenuHandler
 Menu, Plugins, Add, Insert [[rtf=]]     , PluginMenuHandler
 
-;Menu, Tools, Add, Encrypt text          , GlobalMenuHandler
-;Menu, Tools, Add,
-Menu, Tools, Add, Convert CSV file         , GlobalMenuHandler
-Menu, Tools, Add, Convert List             , GlobalMenuHandler
-Menu, Tools, Add, Convert Texter bundle    , GlobalMenuHandler
-Menu, Tools, Add, Convert UltraEdit taglist, GlobalMenuHandler
 
 Menu, Help, Add, &Help, GlobalMenuHandler
 Menu, Help, Icon,&Help, icons\help.ico
@@ -2541,8 +2523,6 @@ Menu, Help, Add, &Quick Start Guide, GlobalMenuHandler
 Menu, Help, Icon,&Quick Start Guide, icons\help.ico
 
 Menu, MenuBar2, Add, &Plugins, :Plugins
-Menu, MenuBar2, Add, &Tools, :Tools ; make it available in Edit gui
-Menu, MenuBar , Add, &Tools, :Tools ; make it available in Search gui
 Menu, MenuBar2, Add, &Help, :Help , Right ; make it available in Edit gui (Right works as of v1.1.22.07+)
 Menu, MenuBar , Add, &Help, :Help , Right ; make it available in Search gui
 Return
